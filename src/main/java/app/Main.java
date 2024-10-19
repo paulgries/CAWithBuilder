@@ -1,19 +1,25 @@
 package app;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
 
+/**
+ * The Main class of our application.
+ */
 public class Main {
+    /**
+     * Builds and runs the CA architecture of the application.
+     * @param args unused arguments
+     */
     public static void main(String[] args) {
-        AppBuilder appBuilder = new AppBuilder();
-        JFrame application = appBuilder
-                .addLoginView()
-                .addSignupView()
-                .addLoggedInView()
-                .addSignupUseCase()
-                .addLoginUseCase()
-                .addChangePasswordUseCase()
-                .build();
+        final AppBuilder appBuilder = new AppBuilder();
+        final JFrame application = appBuilder
+                                            .addLoginView()
+                                            .addSignupView()
+                                            .addLoggedInView()
+                                            .addSignupUseCase()
+                                            .addLoginUseCase()
+                                            .addChangePasswordUseCase()
+                                            .build();
 
         application.pack();
         application.setVisible(true);
