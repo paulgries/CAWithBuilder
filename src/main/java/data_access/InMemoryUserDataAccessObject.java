@@ -3,6 +3,7 @@ package data_access;
 import entity.User;
 import use_case.change_password.ChangePasswordUserDataAccessInterface;
 import use_case.login.LoginUserDataAccessInterface;
+import use_case.logout.LogoutUserDataAccessInterface;
 import use_case.signup.SignupUserDataAccessInterface;
 
 import java.util.HashMap;
@@ -13,12 +14,13 @@ import java.util.Map;
  * NOT persist data between runs of the program.
  */
 public class InMemoryUserDataAccessObject implements SignupUserDataAccessInterface,
-                                                     LoginUserDataAccessInterface,
-                                                     ChangePasswordUserDataAccessInterface {
+        LoginUserDataAccessInterface,
+        ChangePasswordUserDataAccessInterface,
+        LogoutUserDataAccessInterface {
 
     private final Map<String, User> users = new HashMap<>();
 
-    private String currentUser;
+    private String currentUsername;
 
     @Override
     public boolean existsByName(String identifier) {
@@ -41,4 +43,13 @@ public class InMemoryUserDataAccessObject implements SignupUserDataAccessInterfa
         users.put(user.getName(), user);
     }
 
+    @Override
+    public void setCurrentUsername(String name) {
+        this.currentUsername = name;
+    }
+
+    @Override
+    public String getCurrentUsername() {
+        return this.currentUsername;
+    }
 }
