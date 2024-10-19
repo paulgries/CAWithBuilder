@@ -18,7 +18,7 @@ By Friday, your team will submit:
 _(recall, Phase 1 was your solo task of adding the storage of the currently-logged-in user)
 
 ## Task 0: Fork this repo on GitHub
-**To get started, one of you should fork this repo on GitHub and share it with the team. 
+**To get started, one team member should fork this repo on GitHub and share it with the team. 
 All of you should then clone it.**
 
 TODO add note as we have in the past about preventing pushes to main + remind them to only
@@ -30,21 +30,23 @@ also manually link the Maven project, as you did in Phase 1.
 
 ## Task 1: Understanding the Program
 
-You may notice that we have refactored the code _slightly_ since Phase 1.
+You may notice that we have refactored the CA engine code _slightly_ since Phase 1, but the
+way we build the engine is drastically different: we have switched from using Factories to
+using the Builder design pattern, which we'll be discussing in lecture soon. 
 
 Open up `app.Main` and read it as a team.
 - What are the Views and what are the current Use Cases?
+- Which Uses Cases are triggered from each View?
 - Which version of the DAO is `app.Main` using?
 
 The major change since Phase 1 is that we have added the `app.AppBuilder` class which makes
 it easier to understand how our CA engine is being constructed — it also makes `app.Main` nice and concise!
+- Why do all those `addX` methods end in `return this;`? 
 
-Try the signup and login use cases to make sure you can all run the program.
+Run the program and make sure the signup and login Use Cases work.
 
-Currently, you'll notice that the "Log Out" button still doesn't work if you click it to log out after
-you have logged into the application.
-
-It's time to fix the "Log Out" button, which is part of the `LoggedInView`.
+Currently, you'll notice that the "Log Out" button still doesn't actually log you out. It's time to fix
+that button, which is part of the `LoggedInView`.
 We have created all the classes for you, but some of the code is missing.
 As a team, your task is to fill in the missing code so that the Log Out Use Case is implemented.
 
