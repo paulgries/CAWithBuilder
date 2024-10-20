@@ -26,7 +26,10 @@ class LogoutInteractorTest {
         LogoutOutputBoundary successPresenter = new LogoutOutputBoundary() {
             @Override
             public void prepareSuccessView(LogoutOutputData user) {
+                // check that the user was logged out
                 assertNull(userRepository.getCurrentUsername());
+                // check that the output data contains the username of who logged out
+                assertEquals("Paul", user.getUsername());
             }
 
             @Override
