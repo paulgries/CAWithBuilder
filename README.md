@@ -15,14 +15,26 @@ By Friday, your team will submit:
 - a draft of your project blueprint proposal. [not for credit]
 
 # Phase 2 [for credit]
-_(recall, Phase 1 was your solo task of adding the storage of the currently-logged-in user)
+_(recall, Phase 1 was your solo task of adding the storage of the currently-logged-in user)_
 
 ## Task 0: Fork this repo on GitHub
 **To get started, one team member should fork this repo on GitHub and share it with the team. 
 All of you should then clone it.**
 
-TODO add note as we have in the past about preventing pushes to main + remind them to only
-     commit and push the .java files they are working on; nothing in `.idea` should typically be pushed.
+* * *
+
+Suggested logistics: One of you should invite the others to collaborate on their fork of the
+original repo on GitHub. You can do this in your repo on GitHub under `Settings -> Collaborators`.
+This will allow you to push branches to a common repo and then use pull requests to contribute
+your code and review. To prevent others from pushing directly to the main branch,
+we recommend you set branch protection rules on GitHub. Below are how the settings might look if you
+add branch protection rules:
+
+![image of branch protection rules for main
+with the requirement of two approvers to
+merge in pull requests.](images/branch_protection_rules.png)
+
+* * *
 
 Open the project in IntelliJ and make sure you can successfully run `app/Main.java`.
 Note: you may need to set the Project SDK in the `Project Structure...` menu, and possibly
@@ -48,9 +60,12 @@ Run the program and make sure the signup and login Use Cases work.
 Currently, you'll notice that the "Log Out" button still doesn't actually log you out. It's time to fix
 that button, which is part of the `LoggedInView`.
 We have created all the classes for you, but some of the code is missing.
-As a team, your task is to fill in the missing code so that the Log Out Use Case is implemented.
+As a team, your task is to fill in the missing code so that the Logout Use Case is implemented.
+**The next part of the readme describes how your team will do this.**
 
-Your team will know when you are done when:
+* * *
+
+**Your team will know when you are done when:**
 
 - Clicking the "Log Out" button takes the user back to the Login View when you use the program.
 - The provided `LogoutInteractorTest` test passes.
@@ -59,20 +74,60 @@ The "Log Out" button is an instance variable in class `LoggedInVew`. Go find it.
 Also look at the `interface_adapter.change_password.LoggedInViewModel`, which contains any
 data showing on the `LoggedInVew`.
 
+* * *
+
 ## Task 2: Dividing up the work
 
 There are `TODO` comments left in the files
-(recall that you can use the TODO tool window to conveniently pull up a complete list).
+Recall that you can use the TODO tool window to conveniently pull up a complete list.
 
-The TODOs are summarized below to help your team decide how to split them up.
+Once the TODOs are all complete, the "Log Out" button _should_ work!
 
-TODO add the TODO notes fully here!
+As a team, split up the TODOs (see below) between the members of your team.
 
-Once the TODOs are complete, the "Log Out" button should work!
-
-As a team, split up the TODOs between the members of your team.
-
+There are TODOs in six of the files.
 Make sure each member has at least one TODO which they will be responsible for completing.
+If your team prefers to work in pairs, that is fine too. Your individual branches
+will not be graded for this — only the final, working version.
+
+The TODOs are summarized below (by file) to help your team decide how to split them up:
+
+* * *
+
+- `LoggedInView.java` (tip: refer to the other views for similar code)
+   -[ ] TODO: save the logout controller in the instance variable.
+   -[ ] TODO: execute the logout use case through the Controller
+
+* * *
+
+- `LogoutController.java` (tip: refer to the other controllers for similar code)
+   -[ ] TODO: Save the interactor in the instance variable.
+   -[ ] TODO: run the use case interactor for the logout use case
+
+* * *
+
+- `LogoutInputData.java`
+   -[ ] TODO: save the current username in an instance variable and add a getter.
+
+* * *
+
+- `LogoutInteractor.java` (tip: refer to `ChangePasswordInteractor.java` for similar code)
+   -[ ] TODO: save the DAO and Presenter in the instance variables.
+   -[ ] TODO: implement the logic of the Logout Use Case
+
+* * *
+
+- `LogoutOutputData.java`
+   -[ ] TODO: save the parameters in the instance variables.
+
+* * *
+
+- `LogoutPresenter.java` (tip: refer to `SignupPresenter.java` for similar code)
+   -[ ] TODO: assign to the three instance variables.
+   -[ ] TODO: have prepareSuccessView update the LoggedInState
+   -[ ] TODO: have prepareSuccessView update the LoginState
+
+* * *
 
 1. Make a branch named the first part of your UofT email address, everything before the `@`.
 For example, if your email address is `paul.gries@mail.utoronto.ca`, then the branch name would
@@ -89,7 +144,11 @@ git switch paul.gries
 2. Complete your assigned TODO and make a pull request on GitHub. In your pull request,
    briefly describe what your TODO was and how you implemented it. If you aren't sure
    about part of it, include this in your pull request so everyone knows what to look
-   for when reviewing.
+   for when reviewing — or you can of course discuss with your team before making your
+   pull request since you are physically working in the same space.
+   - **Important: don't push any changes to the `.idea` folder, as that
+     may cause issues for your other teammates, as some files contain
+     configurations specific to your individual IntelliJ projects.**
 
 3. Review each other's pull requests to ensure each TODO is correctly implemented.
 
@@ -97,10 +156,15 @@ git switch paul.gries
    correctness of the code. Setting a breakpoint where the log-out use case
    interactor starts its work will likely be a great place to start when debugging.
 
+And that's it; you now have a working Logout Use Case! Instructions for
+how to submit your work on MarkUs will be posted later.
+
+Your team should spend the rest of the lab working on your project blueprint.
+
+* * *
+
 # Project Blueprint
 
 See Quercus for details about the project blueprint! By the end of the week,
 the goal is for your team to have a fully drafted blueprint so that your team
 will be ready to get started on your project after Reading Week.
-
-TODO some basic stuff getting their repo set up for the project... now or later?
