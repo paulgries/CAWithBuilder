@@ -16,4 +16,7 @@ public class LogoutOutputData {
         return username;
     }
 
+    public boolean isUseCaseFailed() {
+        return useCaseFailed;
+    }
 }
