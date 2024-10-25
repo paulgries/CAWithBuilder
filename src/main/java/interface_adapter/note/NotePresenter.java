@@ -2,6 +2,9 @@ package interface_adapter.note;
 
 import use_case.note.NoteOutputBoundary;
 
+/**
+ * The presenter for our Note viewing and editing program.
+ */
 public class NotePresenter implements NoteOutputBoundary {
 
     private final NoteViewModel noteViewModel;
@@ -18,6 +21,7 @@ public class NotePresenter implements NoteOutputBoundary {
     @Override
     public void prepareSuccessView(String note) {
         noteViewModel.getState().setNote(note);
+        noteViewModel.getState().setError(null);
         noteViewModel.firePropertyChanged();
     }
 
@@ -28,6 +32,7 @@ public class NotePresenter implements NoteOutputBoundary {
      */
     @Override
     public void prepareFailView(String errorMessage) {
-
+        noteViewModel.getState().setError(errorMessage);
+        noteViewModel.firePropertyChanged();
     }
 }
