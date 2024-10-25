@@ -31,6 +31,7 @@ import use_case.note.NoteDataAccessInterface;
  */
 public class DBNoteDataAccessObject implements NoteDataAccessInterface {
     private static final int SUCCESS_CODE = 200;
+    private static final int CREDENTIAL_ERROR = 401;
     private static final String CONTENT_TYPE_LABEL = "Content-Type";
     private static final String CONTENT_TYPE_JSON = "application/json";
     private static final String STATUS_CODE_LABEL = "status_code";
@@ -65,12 +66,15 @@ public class DBNoteDataAccessObject implements NoteDataAccessInterface {
             if (responseBody.getInt(STATUS_CODE_LABEL) == SUCCESS_CODE) {
                 return loadNote(user);
             }
+            else if (responseBody.getInt(STATUS_CODE_LABEL) == CREDENTIAL_ERROR) {
+                throw new DataAccessException("message could not be found or password was incorrect");
+            }
             else {
-                throw new RuntimeException(responseBody.getString(MESSAGE));
+                throw new DataAccessException("database error: " + responseBody.getString(MESSAGE));
             }
         }
         catch (IOException | JSONException ex) {
-            throw new RuntimeException(ex);
+            throw new DataAccessException(ex.getMessage());
         }
     }
 
