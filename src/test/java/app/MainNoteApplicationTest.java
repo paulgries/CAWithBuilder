@@ -57,7 +57,6 @@ public class MainNoteApplicationTest {
         Component[] components =  ((JPanel)app.getRootPane().getContentPane().getComponents()[0]).getComponents();
         JTextArea textArea = null;
         for (Component component : components) {
-            System.out.println(component);
             if (component instanceof JTextArea) {
                 textArea = (JTextArea) component;
                 assertEquals("test", textArea.getText());
@@ -89,6 +88,7 @@ public class MainNoteApplicationTest {
         assertEquals("test test", textArea.getText());
         textArea.setText("");
 
+        System.out.println("cleared text; about to refresh...");
         // pause execution for a bit so we can visually see the changes on the screen
         try {
             sleep(1500);
@@ -98,6 +98,8 @@ public class MainNoteApplicationTest {
 
         load.doClick();
         assertEquals("test test", textArea.getText());
+
+        System.out.println("after refresh!");
 
         // pause execution for a bit so we can visually see the changes on the screen
         try {
