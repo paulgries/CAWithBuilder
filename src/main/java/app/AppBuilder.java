@@ -1,31 +1,31 @@
 package app;
 
 import data_access.DBUserDataAccessObject;
-import entity.CommonUserFactory;
-import entity.UserFactory;
-import interface_adapter.ViewManagerModel;
-import interface_adapter.logged_in.ChangePasswordController;
-import interface_adapter.logged_in.LoggedInPresenter;
-import interface_adapter.logged_in.LoggedInViewModel;
-import interface_adapter.login.LoginController;
-import interface_adapter.login.LoginPresenter;
-import interface_adapter.login.LoginViewModel;
-import interface_adapter.signup.SignupController;
-import interface_adapter.signup.SignupPresenter;
-import interface_adapter.signup.SignupViewModel;
-import use_case.change_password.ChangePasswordInputBoundary;
-import use_case.change_password.ChangePasswordInteractor;
-import use_case.change_password.ChangePasswordOutputBoundary;
-import use_case.login.LoginInputBoundary;
-import use_case.login.LoginInteractor;
-import use_case.login.LoginOutputBoundary;
-import use_case.signup.SignupInputBoundary;
-import use_case.signup.SignupInteractor;
-import use_case.signup.SignupOutputBoundary;
-import view.LoggedInView;
-import view.LoginView;
-import view.SignupView;
-import view.ViewManager;
+import user.CommonUserFactory;
+import user.UserFactory;
+import framework.ViewManagerModel;
+import account.change_password.ChangePasswordController;
+import account.change_password.ChangePasswordPresenter;
+import account.change_password.ChangePasswordViewModel;
+import authentication.login.LoginController;
+import authentication.login.LoginPresenter;
+import authentication.login.LoginViewModel;
+import authentication.signup.SignupController;
+import authentication.signup.SignupPresenter;
+import authentication.signup.SignupViewModel;
+import account.change_password.use_case.ChangePasswordInputBoundary;
+import account.change_password.use_case.ChangePasswordInteractor;
+import account.change_password.use_case.ChangePasswordOutputBoundary;
+import authentication.login.use_case.LoginInputBoundary;
+import authentication.login.use_case.LoginInteractor;
+import authentication.login.use_case.LoginOutputBoundary;
+import authentication.signup.use_case.SignupInputBoundary;
+import authentication.signup.use_case.SignupInteractor;
+import authentication.signup.use_case.SignupOutputBoundary;
+import account.change_password.ChangePasswordView;
+import authentication.login.LoginView;
+import authentication.signup.SignupView;
+import framework.ViewManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,8 +42,8 @@ public class AppBuilder {
     private SignupView signupView;
     private SignupViewModel signupViewModel;
     private LoginViewModel loginViewModel;
-    private LoggedInViewModel loggedInViewModel;
-    private LoggedInView loggedInView;
+    private ChangePasswordViewModel changePasswordViewModel;
+    private ChangePasswordView changePasswordView;
     private LoginView loginView;
 
     public AppBuilder() {
@@ -64,10 +64,10 @@ public class AppBuilder {
         return this;
     }
 
-    public AppBuilder addLoggedInView() {
-        loggedInViewModel = new LoggedInViewModel();
-        loggedInView = new LoggedInView(loggedInViewModel);
-        cardPanel.add(loggedInView, loggedInView.getViewName());
+    public AppBuilder addChangePasswordView() {
+        changePasswordViewModel = new ChangePasswordViewModel();
+        changePasswordView = new ChangePasswordView(changePasswordViewModel);
+        cardPanel.add(changePasswordView, changePasswordView.getViewName());
         return this;
     }
 
@@ -84,7 +84,7 @@ public class AppBuilder {
 
     public AppBuilder addLoginUseCase() {
         final LoginOutputBoundary loginOutputBoundary = new LoginPresenter(viewManagerModel,
-                loggedInViewModel, loginViewModel);
+                changePasswordViewModel, loginViewModel);
         final LoginInputBoundary loginInteractor = new LoginInteractor(
                 userDataAccessObject, loginOutputBoundary);
 
@@ -94,8 +94,8 @@ public class AppBuilder {
     }
 
     public AppBuilder addChangePasswordUseCase() {
-        final ChangePasswordOutputBoundary changePasswordOutputBoundary = new LoggedInPresenter(viewManagerModel,
-                loggedInViewModel);
+        final ChangePasswordOutputBoundary changePasswordOutputBoundary = new ChangePasswordPresenter(viewManagerModel,
+                changePasswordViewModel);
 
         final UserFactory userFactory = new CommonUserFactory();
 
@@ -103,7 +103,7 @@ public class AppBuilder {
                 new ChangePasswordInteractor(userDataAccessObject, changePasswordOutputBoundary, userFactory);
 
         ChangePasswordController changePasswordController = new ChangePasswordController(changePasswordInteractor);
-        loggedInView.setChangePasswordController(changePasswordController);
+        changePasswordView.setChangePasswordController(changePasswordController);
         return this;
     }
 
