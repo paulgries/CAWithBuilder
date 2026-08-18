@@ -1,7 +1,7 @@
-package authentication.signup;
+package account.signup;
 
-import authentication.signup.use_case.SignupInputBoundary;
-import authentication.signup.use_case.SignupInputData;
+import account.signup.use_case.SignupInputBoundary;
+import account.signup.use_case.SignupInputData;
 
 /**
  * Controller for the Signup Use Case.

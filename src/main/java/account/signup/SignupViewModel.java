@@ -1,4 +1,4 @@
-package authentication.signup;
+package account.signup;
 import framework.ViewModel;
 
 

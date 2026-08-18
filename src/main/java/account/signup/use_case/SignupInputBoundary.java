@@ -1,4 +1,4 @@
-package authentication.signup.use_case;
+package account.signup.use_case;
 
 /**
  * Input Boundary for actions which are related to signing up.

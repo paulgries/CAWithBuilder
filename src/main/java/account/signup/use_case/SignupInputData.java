@@ -1,4 +1,4 @@
-package authentication.signup.use_case;
+package account.signup.use_case;
 
 /**
  * The Input Data for the Signup Use Case.

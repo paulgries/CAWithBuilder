@@ -7,7 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import account.change_password.use_case.ChangePasswordUserDataAccessInterface;
 import authentication.login.use_case.LoginUserDataAccessInterface;
-import authentication.signup.use_case.SignupUserDataAccessInterface;
+import account.signup.use_case.SignupUserDataAccessInterface;
 
 import java.io.IOException;
 

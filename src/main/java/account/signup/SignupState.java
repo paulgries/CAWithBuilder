@@ -1,4 +1,4 @@
-package authentication.signup;
+package account.signup;
 
 /**
  * The state for the Signup View Model.
