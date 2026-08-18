@@ -1,10 +1,10 @@
 package data_access;
 
-import entity.User;
-import entity.UserFactory;
-import use_case.change_password.ChangePasswordUserDataAccessInterface;
-import use_case.login.LoginUserDataAccessInterface;
-import use_case.signup.SignupUserDataAccessInterface;
+import user.User;
+import user.UserFactory;
+import account.change_password.use_case.ChangePasswordUserDataAccessInterface;
+import authentication.login.use_case.LoginUserDataAccessInterface;
+import authentication.signup.use_case.SignupUserDataAccessInterface;
 
 import java.io.*;
 import java.util.HashMap;

@@ -1,9 +1,9 @@
 package data_access;
 
-import entity.User;
-import use_case.change_password.ChangePasswordUserDataAccessInterface;
-import use_case.login.LoginUserDataAccessInterface;
-import use_case.signup.SignupUserDataAccessInterface;
+import user.User;
+import account.change_password.use_case.ChangePasswordUserDataAccessInterface;
+import authentication.login.use_case.LoginUserDataAccessInterface;
+import authentication.signup.use_case.SignupUserDataAccessInterface;
 
 import java.util.HashMap;
 import java.util.Map;
