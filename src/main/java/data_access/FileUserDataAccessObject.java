@@ -4,7 +4,7 @@ import user.User;
 import user.UserFactory;
 import account.change_password.use_case.ChangePasswordUserDataAccessInterface;
 import authentication.login.use_case.LoginUserDataAccessInterface;
-import authentication.signup.use_case.SignupUserDataAccessInterface;
+import account.signup.use_case.SignupUserDataAccessInterface;
 
 import java.io.*;
 import java.util.HashMap;

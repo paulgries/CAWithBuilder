@@ -1,10 +1,10 @@
-package authentication.signup;
+package account.signup;
 
 import framework.ViewManagerModel;
 import authentication.login.LoginState;
 import authentication.login.LoginViewModel;
-import authentication.signup.use_case.SignupOutputBoundary;
-import authentication.signup.use_case.SignupOutputData;
+import account.signup.use_case.SignupOutputBoundary;
+import account.signup.use_case.SignupOutputData;
 
 /**
  * The Presenter for the Signup Use Case.

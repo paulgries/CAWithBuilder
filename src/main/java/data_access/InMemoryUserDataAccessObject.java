@@ -3,7 +3,7 @@ package data_access;
 import user.User;
 import account.change_password.use_case.ChangePasswordUserDataAccessInterface;
 import authentication.login.use_case.LoginUserDataAccessInterface;
-import authentication.signup.use_case.SignupUserDataAccessInterface;
+import account.signup.use_case.SignupUserDataAccessInterface;
 
 import java.util.HashMap;
 import java.util.Map;
